@@ -1,9 +1,16 @@
-body {
+body, html {
+	margin: 0;
+	padding: 0;
 	overflow: hidden;
+	height: 100%;
+}
+
+body {
 	color: #333;
 	background: #fff;
 	font-family: Helvetica, Arial, sans;
 }
+
 
 a { color: #099; }
 
@@ -17,7 +24,6 @@ h1 {
 }
 
 #container {
-	width: 50%;
 	height: 100%;
 	margin: 0 auto;
 	text-align: center;
@@ -44,16 +50,15 @@ h1 {
 		padding: 20px;
 		margin: 40px auto;
 		background: rgba(220, 220, 220, 0.8);;
-		width: 30%;
 		text-align: center;
 		transition-duration: 0.5s;
 		opacity: 0;
 	}
 
 	#controls {
-		margin: 60px 0;
 		transition-duration: 0.5s;
 		transition-function: ease-in-out;
+		margin: 20px 0;
 	}
 
 		#controls.inactive {
@@ -61,15 +66,38 @@ h1 {
 		}
 
 		#frequency, #note {
-			font-size: 80px;
 			font-family: Courier, 'Courier New', mono;
 		}
 
+		#frequency {
+			font-size: 15vw;
+		}
+
 		#note {
-			font-size: 200px;
+			font-size: 20vw;
 		}
 
 		.inactive {
 			opacity: 0.4;
 		}
 
+
+@media(min-width: 1024px) {
+	#container {
+		width: 50%;
+	}
+	
+	#toggle {
+		width: 30%;
+	}
+	
+	#controls {
+		margin: 60px 0;
+	}
+	
+	#frequency {
+		font-size: 80px;
+	}
+	
+	#font-size: 200px;
+}
