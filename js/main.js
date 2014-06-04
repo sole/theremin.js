@@ -7,8 +7,10 @@
 
 	function animate() {
 		requestAnimationFrame(animate);
-		pointer.style.top = (pointerY - 50) + 'px';
-		pointer.style.left = (pointerX - 50)+ 'px';
+		var y = (pointerY - 50);
+		var x = (pointerX - 50);
+
+		pointer.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
 
 		if(playing) {
 			updateDisplay();
