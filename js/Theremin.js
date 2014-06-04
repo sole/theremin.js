@@ -2,7 +2,7 @@ function Theremin(audioContext) {
 
 	// TODO make more things not use this.
 	var oscillatorNode = audioContext.createOscillator();
-	oscillatorNode.start();
+	oscillatorNode.start(0);
 
 	var gainNode = audioContext.createGain();
 	var playing = false;
