@@ -10,7 +10,9 @@
 		var y = (pointerY - 50);
 		var x = (pointerX - 50);
 
-		pointer.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
+		var transform = 'translate3d(' + x + 'px, ' + y + 'px, 0)';
+		pointer.style.transform = transform;
+		pointer.style.webkitTransform = transform;
 
 		if(playing) {
 			updateDisplay();
@@ -51,27 +53,7 @@
 		return noteNumberToNote(frequencyToNoteNumber(f));
 	}
 
-	/*function audioProcess(event) {
-		var buffer = event.outputBuffer,
-			bufferLeft = buffer.getChannelData( 0 ),
-			bufferRight = buffer.getChannelData( 1 ),
-			numSamples = bufferLeft.length,
-			synthOutputBuffer = [];
-
-		if(playing) {
-			synthOutputBuffer = theremin.getBuffer( numSamples );
-			for(var i = 0; i < synthOutputBuffer.length; i++) {
-				bufferLeft[i] = synthOutputBuffer[i];
-				bufferRight[i] = synthOutputBuffer[i];
-			}
-		} else {
-			for(var i = 0; i < numSamples; i++) {
-				bufferLeft[i] = 0;
-				bufferRight[i] = 0;
-			}
-		}
-	}*/
-
+	
 	function init() {
 		
 		pointer = document.getElementById('pointer');
@@ -130,10 +112,6 @@
 	function initAudio() {
 		audioContext = new AudioContext();
 		theremin = new Theremin(audioContext);
-		//jsNode = audioContext.createScriptProcessor(4096);
-		//jsNode.onaudioprocess = audioProcess;
-
-		//jsNode.connect( audioContext.destination );
 		theremin.connect( audioContext.destination );
 	}
 	
