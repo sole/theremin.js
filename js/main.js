@@ -6,7 +6,7 @@
 		audioContext, jsNode, theremin;
 
 	function animate() {
-		requestAnimationFrame(animate);
+
 		var y = (pointerY - 50);
 		var x = (pointerX - 50);
 
@@ -121,6 +121,7 @@
 		pointerY = y;
 		theremin.setPitchBend( x / window.innerWidth );
 		theremin.volume = 1 - y / window.innerHeight;
+		animate();
 	}
 
 	function initAudio() {
