@@ -79,11 +79,12 @@
 		noteSpan = document.getElementById('note');
 
 		window.addEventListener('mousemove', function(e) {
-			pointerX = e.clientX;
-			pointerY = e.clientY;
+			moveTo(e.clientX, e.clientY);
+		}, false);
 
-			theremin.setPitchBend( pointerX / window.innerWidth );
-			theremin.volume = 1 - pointerY / window.innerHeight;
+		window.addEventListener('touchmove', function(e) {
+			var touch = e.touches[0];
+			moveTo(touch.clientX, touch.clientY);
 		}, false);
 
 		var divToggle = document.getElementById('toggle'),
@@ -113,6 +114,13 @@
 		updateDisplay();
 
 		animate();
+	}
+
+	function moveTo(x, y) {
+		pointerX = x;
+		pointerY = y;
+		theremin.setPitchBend( x / window.innerWidth );
+		theremin.volume = 1 - y / window.innerHeight;
 	}
 
 	function initAudio() {
