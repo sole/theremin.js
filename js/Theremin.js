@@ -1,16 +1,11 @@
 function Theremin(audioContext) {
-	var position = 0, frequency,
-		inverseSamplingRate,
-		TWO_PI = Math.PI * 2.0;
 
+	// TODO make more things not use this.
 	var oscillatorNode = audioContext.createOscillator();
 	oscillatorNode.start();
 
 	var gainNode = audioContext.createGain();
 	var playing = false;
-	
-	this.samplingRate = 44100;
-	inverseSamplingRate = 1.0 / this.samplingRate;
 	this.pitchBase = 50;
 	this.pitchBend = 0;
 	this.pitchRange = 2000;
@@ -30,39 +25,20 @@ function Theremin(audioContext) {
 		return playing;
 	};
 
-	/*this.getBuffer = function(numSamples) {
-		var out = [];
-
-		var v = this.volume * this.maxVolume;
-
-		for(var i = 0; i < numSamples; i++) {
-			
-			out[i] = v * Math.sin(position * TWO_PI);
-
-			position += frequency * inverseSamplingRate;
-
-			while(position > 1.0) {
-				position -= 1;
-			}
-
-		}
-
-		return out;
-	};*/
 
 	this.setPitchBend = function(v) {
 		this.pitchBend = v;
-		this.frequency = this.pitchBase + this.pitchBend * this.pitchRange;
-		frequency = this.frequency;
+		frequency = this.pitchBase + this.pitchBend * this.pitchRange;
 		oscillatorNode.frequency.value = frequency;
+		this.frequency = frequency;
 	};
 
-	this.setVolume = function(volume) {
-		// TODO
+	this.setVolume = function(v) {
+		this.volume = this.maxVolume * v;
+		gainNode.gain.value = this.volume;
 	};
 	
 	this.connect = function(output) {
-		//this.oscillator.connect(output);
 		gainNode.connect(output);
 	};
 
