@@ -116,8 +116,8 @@
 	function initAudio() {
 		theremin = new Theremin();
 		
-		audioContext = new webkitAudioContext();
-		jsNode = audioContext.createJavaScriptNode(4096);
+		audioContext = new AudioContext();
+		jsNode = audioContext.createScriptProcessor(4096);
 		jsNode.onaudioprocess = audioProcess;
 
 		jsNode.connect( audioContext.destination );
@@ -128,6 +128,6 @@
 		if(AudioDetector.detects(['webAudioSupport'])) {
 			init();
 		}
-	}
+	};
 
 }());
