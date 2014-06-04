@@ -51,7 +51,7 @@
 		return noteNumberToNote(frequencyToNoteNumber(f));
 	}
 
-	function audioProcess(event) {
+	/*function audioProcess(event) {
 		var buffer = event.outputBuffer,
 			bufferLeft = buffer.getChannelData( 0 ),
 			bufferRight = buffer.getChannelData( 1 ),
@@ -70,7 +70,7 @@
 				bufferRight[i] = 0;
 			}
 		}
-	}
+	}*/
 
 	function init() {
 		
@@ -93,6 +93,9 @@
 			off_msg = 'Turn it <strong>OFF</strong>';
 
 		divToggle.addEventListener('click', function(e) {
+
+			playing = !theremin.togglePlaying();
+
 			if(playing) {
 				controls.className = 'inactive';
 				spanToggle.innerHTML = on_msg;
@@ -120,18 +123,18 @@
 		pointerX = x;
 		pointerY = y;
 		theremin.setPitchBend( x / window.innerWidth );
-		theremin.volume = 1 - y / window.innerHeight;
+		theremin.setVolume( 1 - y / window.innerHeight );
 		animate();
 	}
 
 	function initAudio() {
-		theremin = new Theremin();
-		
 		audioContext = new AudioContext();
-		jsNode = audioContext.createScriptProcessor(4096);
-		jsNode.onaudioprocess = audioProcess;
+		theremin = new Theremin(audioContext);
+		//jsNode = audioContext.createScriptProcessor(4096);
+		//jsNode.onaudioprocess = audioProcess;
 
-		jsNode.connect( audioContext.destination );
+		//jsNode.connect( audioContext.destination );
+		theremin.connect( audioContext.destination );
 	}
 	
 	window.onload = function() {
