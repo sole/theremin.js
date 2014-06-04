@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>theremin.js</title>
+		<script type="text/javascript" src="js/libs/AudioDetector.js"></script>
+		<script type="text/javascript" src="js/libs/RequestAnimationFrame.js"></script>
+		<script type="text/javascript" src="js/Theremin.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<link href="css/s.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-384699-9']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</head>
+	<body>
+		<div id="container">
+			<h1>theremin.js</h1>
+			<p id="lemma">An homage to the <a href="http://en.wikipedia.org/wiki/Theremin">classic instrument</a> invented by <a href="http://en.wikipedia.org/wiki/L%C3%A9on_Theremin">Léon Theremin</a>.</p>
+			<div id="toggle"><span></span></div>
+			
+			<div id="controls" class="inactive">
+				<div id="frequency"><span></span></div>
+				<div><span id="note"></span></div>
+			</div>
+			<div>by <a href="http://5013.es">5013</a>.<br /><br /><a href="http://flattr.com/thing/923353/theremin-js" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a> </div>
+		</div>
+
+		<div id="pointer" class="inactive"></div>
+	</body>
+</html>
