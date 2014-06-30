@@ -36,21 +36,8 @@
 		return s;
 	}
 
-	function frequencyToNoteNumber(f) {
-		return Math.round(12 * Math.log(f / 440.0) + 69);
-	}
-
-	function noteNumberToNote(n) {
-		var notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'],
-			name = n % 12,
-			octave = Math.floor(n / 12) - 1,
-			note = notes[name];
-
-		return note + (note.length < 2 ? '-' : '') + octave;
-	}
-
 	function frequencyToNote(f) {
-		return noteNumberToNote(frequencyToNoteNumber(f));
+		return MIDIUtils.noteNumberToName(MIDIUtils.frequencyToNoteNumber(f));
 	}
 
 	
